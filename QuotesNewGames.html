@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<style>
+    body {
+        font: 14px/20px Arial,sans-serif;
+        color:#222;
+    }
+
+    .cust-quotes {
+        width: 640px;
+        height:100px;
+        position:relative;
+    }
+
+    .cust-quotes blockquote {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 14px;
+        text-align: center;
+        opacity: 0;
+        z-index: 0;
+        transition: opacity 0.5s ease-out 0s, transform 0.5s ease-in 0s;
+    }
+
+    /* IE < 10 fallback */
+    .no-csstransitions .cust-quotes blockquote,
+    .no-csstransforms .cust-quotes blockquote {
+        position:relative;
+    }
+
+    .cust-quotes blockquote:first-child {
+        opacity: 0;
+        transform: translateY(-10px) scale(1.1);
+    }
+    .cust-quotes blockquote:first-child + blockquote {
+        opacity: 1;
+        z-index: 1;
+        transition: opacity 1.6s ease 0s;
+    }
+    .cust-quotes blockquote p{
+        font-size:24px;
+        font-weight:normal;
+        font-style:italic;
+        color:#353535;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .cust-quotes blockquote p:before {
+        content: '\201C';
+    }
+    .cust-quotes blockquote p:after {
+        content: '\201D';
+    }
+    .cust-quotes blockquote cite {
+        text-align: center;
+        font-size: 14px;
+        color: #898989;
+    }
+    .cust-quotes blockquote cite a {
+        font-size:14px;
+        font-weight:normal;
+    }
+
+
+
+    .container {
+
+        max-width:940px;
+        margin:0 auto;
+
+    }
+
+    #testimonials {
+        margin:0 auto;
+        width:940px;
+
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Belens magical quotes</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        <!--
+        function initQuoteCarousel() {
+
+            var $quotesWrapper = $(".cust-quotes");
+            var $quotes = $quotesWrapper.find("blockquote");
+
+            if (!$quotes.length) {
+                return;
+            }
+
+            var selectNextQuote = function () {
+                // keep move first quote in dom to the end to make continous
+                var $quote = $quotesWrapper.find("blockquote:first").detach().appendTo($quotesWrapper);
+
+                setTimeout(selectNextQuote, $quote.data("timeout"));
+            };
+
+            setTimeout(selectNextQuote, $quotes.filter(":first").data("timeout"));
+
+        }
+
+        $(function () {
+            initQuoteCarousel();
+        });
+
+        //-->
+    </script>
+</head>
+<body>
+<section id="testimonials">
+    <h4 class="sec-head">Here what others had to say&hellip;</h4>
+    <div class="cust-quotes">
+        <blockquote data-timeout="1800"><p>The best widget I've ever had</p><cite>John Doe</cite></blockquote>
+        <blockquote data-timeout="1800"><p>It was so good I bought one for my grandma</p><cite>Richard Lee</cite></blockquote>
+        <blockquote data-timeout="1800"><p>Can't wait until they release version 2!</p><cite>Samantha West</cite></blockquote>
+        <blockquote data-timeout="1800"><p>David Otero is a noob!</p><cite>Pierre Gufler</cite></blockquote>
+    </div>
+</section>
+</body>
+</html>
